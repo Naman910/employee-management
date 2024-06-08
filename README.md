@@ -14,7 +14,7 @@ This Go application provides a RESTful API for managing employees with CRUD oper
 2. **Run Application**:
 
    ```sh
-   go run main.go
+   go run .
    ```
 
 3. **API Endpoints**:
