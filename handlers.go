@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"sort"
 	"strconv"
 
 	"github.com/gorilla/mux"
@@ -93,6 +94,11 @@ func listEmployeesHandler(w http.ResponseWriter, r *http.Request) {
 		employees = append(employees, emp)
 	}
 	store.mu.RUnlock()
+
+	// Sort the slice by ID or any other criteria
+	sort.Slice(employees, func(i, j int) bool {
+		return employees[i].ID < employees[j].ID
+	})
 
 	if start > len(employees) {
 		start = len(employees)
